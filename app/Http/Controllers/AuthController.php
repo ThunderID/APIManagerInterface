@@ -7,6 +7,7 @@ class AuthController extends Controller
 	
 	public function getLogin()
 	{
-		dd('login');
+		return view('content.login.form')
+			->with('login', true);
 	}
 }

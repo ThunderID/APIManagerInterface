@@ -1,2 +1,143 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "bootstrap/bootstrap";
+@import "spacing";
+@import "colors";
+@import "height";
+@import "kc.fab";
 
+html, body { 
+	background: $white;
+	padding-top: 50px;
+	color: #333;
+}
+
+.fullwidth { width:100%; }
+.halfwidth { width: 50%; }
+
+// Forms
+.c-select { text-transform:uppercase; font-size:12px; }
+.c-select-m { text-transform:uppercase; font-size:16px; }
+
+// Animation
+.animation:hover { 
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+a.no-decoration, a:hover.no-decoration { 
+	text-decoration:none !important;
+}
+
+a:hover { 
+	// background: $color1;
+	text-decoration:underline;
+}
+
+// Modals
+.fullscreen-modal { 
+	.modal-dialog {
+		margin:0px;
+		border-radius:0px;
+		width:100%;
+		.modal-content { 
+			border-radius:0px;
+			height:100% !important;
+			background:$white;
+			width:100%;
+		}
+	}
+}
+
+// Card
+.card {
+	// @extend .height-1;
+}
+
+// circle
+.circle { border-radius: 100%; padding:10px 15px;}
+
+// position
+.right-bottom-corner { position:fixed; bottom:20px; right: 20px;}
+
+// typography
+.text-shadow { text-shadow: 2px 2px #000; }
+.text-light { font-weight:300;}
+.text-pretty { font-family:"Coming Soon"; }
+.text-wordwrap { word-wrap: break-word; }
+.del { color:$brand-danger; text-decoration: line-through;}
+b { font-weight: 600;}
+.text-12 { font-size:12px; }
+.text-14 { font-size:14px; }
+
+// border
+.border-light { border-width:1px; }
+.border-bold { border-width:5px; }
+.border-solid { border-style:solid; }
+.border-solid-right { 
+	border-right-style:solid; 
+	@media screen and (max-width: 767px) {
+		border-right-style: none;
+	}
+}
+.border-solid-left { 
+	border-left-style:solid; 
+	@media screen and (max-width: 767px) {
+		border-left-style: none;
+	}
+}
+.border-dashed-left { 
+	border-left-style:dashed; 
+	@media screen and (max-width: 767px) {
+		border-left-style: none;
+	}
+}
+.border-dashed-right { 
+	border-right-style:dashed; 
+	@media screen and (max-width: 767px) {
+		border-right-style: none;
+	}
+}
+
+// cursor
+.pointer { cursor: pointer; }
+
+// tour scroll progress (1 of 10)
+.tour-scroll-notification { 
+	position:fixed; 
+	bottom:30px; 
+	left:50%;
+	z-index:1000;
+	display:none;
+	.text { 
+		padding:3px 25px; 
+		border-radius:15px; 
+		// border:1px solid $gray;
+		background: $gray-lightest;
+	}
+}
+
+.filter-tour-bar {
+	border-bottom:1px solid $color1;
+	background:black;
+	color:$color1-lightest;
+	a { 
+		color:$color1-lightest; 
+		border-bottom:1px dotted $color1;
+	}
+	a:hover { text-decoration:none; color: white;}
+	hr { border-style:dotted; border-color:#fff; margin:5px 0px 15px;}
+	label { cursor:pointer;}
+}
+
+
+.comparison-bar { 
+	position:fixed; 
+	bottom:20px; 
+	right:20px;
+	z-index:999;
+
+}
+
+.inline { display:inline; }

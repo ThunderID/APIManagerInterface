@@ -1,0 +1,101 @@
+.black { background: $black !important; }
+.black-hover:hover { background: $black !important; }
+.black-text { color: $black !important; }
+.black-hover-text:hover { color: $black !important; }
+.black-border { border-color: $black !important; }
+
+.gray-dark { background: $gray-dark !important; }
+.gray-dark-hover:hover { background: $gray-dark !important; }
+.gray-dark-text { color: $gray-dark !important; }
+.gray-dark-hover-text:hover { color: $gray-dark !important; }
+.gray-dark-border { border-color: $gray-dark !important; }
+
+.gray-light { background: $gray-light !important; }
+.gray-light-hover:hover { background: $gray-light !important; }
+.gray-light-text { color: $gray-light !important; }
+.gray-light-hover-text:hover { color: $gray-light !important; }
+.gray-light-border { border-color: $gray-light !important; }
+
+.gray-lighter { background: $gray-lighter !important; }
+.gray-lighter-hover:hover { background: $gray-lighter !important; }
+.gray-lighter-text { color: $gray-lighter !important; }
+.gray-lighter-hover-text:hover { color: $gray-lighter !important; }
+.gray-lighter-border { border-color: $gray-lighter !important; }
+
+.gray-lightest { background: $gray-lightest !important; }
+.gray-lightest-hover:hover { background: $gray-lightest !important; }
+.gray-lightest-text { color: $gray-lightest !important; }
+.gray-lightest-hover-text:hover { color: $gray-lightest !important; }
+.gray-lightest-border { border-color: $gray-lightest !important; }
+
+.white { background: white !important; }
+.white-hover:hover { background: white !important; }
+.white-text { color: white !important; }
+.white-hover-text:hover { color: white !important; }
+.white-border { border-color: white !important; }
+
+.yellow { background: $yellow !important; }
+.yellow-hover:hover { background: $yellow !important;}
+.yellow-text { color: $yellow !important; }
+.yellow-hover-text:hover { color: $yellow !important; }
+.yellow-border { border-color: $yellow !important; }
+
+.color1 { background: $color1 !important; }
+.color1-hover:hover { background: $color1 !important;}
+.color1-text { color: $color1 !important; }
+.color1-hover-text:hover { color: $color1 !important; }
+.color1-border { border-color: $color1 !important; }
+
+.red { background: $red !important; }
+.red-hover:hover { background: $red !important;}
+.red-text { color: $red !important; }
+.red-hover-text:hover { color: $red !important; }
+.red-border { border-color: $red !important; }
+
+.color1 { background: $color1 !important; }
+.color1-text { color: $color1 !important; }
+.color1-lighter-text { color: $color1-lighter !important; }
+.color1-lightest-text { color: $color1-lightest !important; }
+
+.transparent { 
+	background: rgba(255,255,255,0); 
+	pointer-events: none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='your_transparent.png', sizingMethod='scale');
+}
+
+.black-transparent { 
+	background:rgba(0,0,0,0.3); 
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='your_transparent.png', sizingMethod='scale');
+}
+
+.white-transparent { 
+	background:rgba(255,255,255,0.3); 
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='your_transparent.png', sizingMethod='scale');
+}
+
+
+// SOCIAL MEDIA
+.facebook-bg { background-color: $color-facebook !important; }
+.facebook-bg-hover:hover { background-color: lighten($color-facebook, 15%) !important; }
+.facebook-outline { border-color: $color-facebook !important; }
+.facebook-text { color: $color-facebook !important; }
+
+.twitter-bg { background-color: $color-twitter !important; }
+.twitter-bg-hover:hover { background-color: lighten($color-twitter, 15%) !important; }
+.twitter-outline { border-color: $color-twitter !important; }
+.twitter-text { color: $color-twitter !important; }
+
+.googleplus-bg { background-color: $color-googleplus !important; }
+.googleplus-bg-hover:hover { background-color: lighten($color-googleplus,15%) !important; }
+.googleplus-outline { border-color: $color-googleplus !important; }
+.googleplus-text	{ color: $color-googleplus !important; }
+
+.linkedin-bg { background-color: $color-linkedin !important; }
+.linkedin-bg-hover:hover { background-color: lighten($color-linkedin, 15%) !important; }
+.linkedin-outline { border-color: $color-linkedin !important; }
+.linkedin-text { color: $color-linkedin !important; }
+
+.whatsapp-bg { background-color: $color-whatsapp !important; }
+.whatsapp-bg-hover:hover { background-color: lighten($color-whatsapp, 15%) !important; }
+.whatsapp-outline { background-color: $color-whatsapp !important; }
+.whatsapp-text { color: $color-whatsapp !important; }

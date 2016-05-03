@@ -1,4 +1,4 @@
-@extends('wireframe')
+@extends('desktop_v2.wireframe')
 
 @section('content')
 
@@ -12,7 +12,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 center-block white">
-			<form action="/logging/in" method="post" class="form p-a-2">
+			<form action="{{route('auth.postLogin')}}" method="post" class="form p-a-2">
 				<input name="grant_type" value="password" type="hidden">
 				<input name="key" value="{{ env('OAUTH_KEY', '') }}" type="hidden">
 				<input name="secret" value="{{ env('OAUTH_SECRET', '') }}" type="hidden">

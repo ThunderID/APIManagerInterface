@@ -195,70 +195,70 @@ class AclController extends BaseController
 	 */
 	public function create($client_id = null, $id = null)
 	{
-		//1. validate
+		// //1. validate
 		if(is_null($client_id))
 		{
 			App::abort(403, 'Id Client tidak ada');
 		}
 
-		// 2 & 3        
+		// // 2 & 3        
 		$APIApp                                      = new APIApp;
 		$org                                         = $APIApp->getShow($client_id);  
 
-		if(!is_null($id))
-		{
-			//2. get data
-			$APIAcl                               = new APIAcl;
-			$data                                    = $APIAcl->getShow($client_id, $id);  
+		// if(!is_null($id))
+		// {
+		// 	//2. get data
+		// 	$APIAcl                               = new APIAcl;
+		// 	$data                                    = $APIAcl->getShow($client_id, $id);  
 
 			//3. set page attributes
-			$current_route                           = route(Route::CurrentRouteName(),['client_id' => $client_id ,'id' => $id]);
+		// 	$current_route                           = route(Route::CurrentRouteName(),['client_id' => $client_id ,'id' => $id]);
 
 
-			$this->page_attributes->page_subtitle    = 'Edit ACL '.$data['data']['name'];     
-			$this->page_attributes->breadcrumb       = array_merge(
-															$this->page_attributes->breadcrumb,
-															[
-																$org['data']['name'] => route('org.show', ['id' => $client_id]),
-																'ACL' => route('acl.index', ['client_id' => $client_id]),
-																'Edit ACL ' . $data['data']['name'] => $current_route,
-															]
-														);                           
-		}
-		else
-		{
-			//2. get data
-			$data['data']['id']                      = ""; 
-			$data['data']['organisation_id']         = $client_id;
-			$data['data']['name']                    = null;
-			$data['data']['address']                 = null;
-			$data['data']['phone']                   = null;
-			$data['data']['email']                   = null;
-			$data['data']['charts']                  = [];
+		// 	$this->page_attributes->page_subtitle    = 'Edit ACL '.$data['data']['name'];     
+		// 	$this->page_attributes->breadcrumb       = array_merge(
+		// 													$this->page_attributes->breadcrumb,
+		// 													[
+		// 														$org['data']['name'] => route('org.show', ['id' => $client_id]),
+		// 														'ACL' => route('acl.index', ['client_id' => $client_id]),
+		// 														'Edit ACL ' . $data['data']['name'] => $current_route,
+		// 													]
+		// 												);                           
+		// }
+		// else
+		// {
+		// 	//2. get data
+		// 	$data['data']['id']                      = ""; 
+		// 	$data['data']['organisation_id']         = $client_id;
+		// 	$data['data']['name']                    = null;
+		// 	$data['data']['address']                 = null;
+		// 	$data['data']['phone']                   = null;
+		// 	$data['data']['email']                   = null;
+		// 	$data['data']['charts']                  = [];
 
-			//3. set page attributes
+		// 	//3. set page attributes
 			$current_route                           = route(Route::CurrentRouteName(),['client_id' => $client_id]);
 
 			$this->page_attributes->page_subtitle    = 'ACL Baru';     
 			$this->page_attributes->breadcrumb       = array_merge(
 															$this->page_attributes->breadcrumb,
 															[
-																$org['data']['name'] => route('org.show', ['id' => $client_id]),
-																'ACL' => route('acl.index', ['client_id' => $client_id]),
-																'ACL Baru' => $current_route,
+																'Apps'		=> route('apps.show', ['id' => $client_id]),
+																'ACL' 		=> route('acls.index', ['client_id' => $client_id]),
+																'ACL Baru' 	=> $current_route,
 															]
 														);               
-		}      
+		// }      
 
-		$APIAcl									= new APIAcl;
-		$acls									= $APIAcl->getIndex($client_id, [
-														]);
+		// $APIAcl									= new APIAcl;
+		// $acls									= $APIAcl->getIndex($client_id, [
+		// 												]);
 
 		//4. set page datas
 		$this->page_datas->datas['id']				= $client_id;
-		$this->page_datas->datas['name']			= $org['data']['name'];
-		$this->page_datas->datas['acl']			= $data['data'];
-		$this->page_datas->datas['acls']		= $acls['data']['data'];
+		// $this->page_datas->datas['name']			= $org['data']['name'];
+		// $this->page_datas->datas['acl']				= $data['data'];
+		// $this->page_datas->datas['acls']			= $acls['data']['data'];
 
 		//5. generate view
 		$view_source                                = $this->view_source_root . '.create';
@@ -313,36 +313,38 @@ class AclController extends BaseController
 		}
 
 		//2. get input
-		$input['name']                              = Input::get('name');                          
-		$input['address']                           = Input::get('address');
-		$input['phone']                             = Input::get('phone');
-		$input['email']                             = Input::get('email');
+		$input['grant_id']                          = Input::get('grant_id');                          
+		$input['grant_name']                        = Input::get('grant_name');
+		$input['client_id']                         = Input::get('client_id');
+		$input['user_id']                           = Input::get('user_id');
 
 		//3. get data
 		if(!is_null($id))
 		{
-			$APIAcl                               = new APIAcl;
-			$data                                    = $APIAcl->getShow($client_id,$id)['data'];
+			$APIAcl                               	= new APIAcl;
+			$data                                   = $APIAcl->getShow($client_id,$id)['data'];
 
-			$data['name']                            = $input['name'];
-			$data['address']                         = $input['address'];
-			$data['phone']                           = $input['phone'];
-			$data['email']                           = $input['email'];
+			$data['grant_id']                       = $input['grant_id'];
+			$data['grant_name']                     = $input['grant_name'];
+			$data['client_id']                      = $input['client_id'];
+			$data['user_id']                        = $input['user_id'];
+			$data['scopes'][0]						= 'employee';
 		}
 		else
 		{
-			$data['id']                              = ""; 
-			$data['organisation_id']                 = $client_id;
-			$data['name']                            = $input['name'];
-			$data['address']                         = $input['address'];
-			$data['phone']                           = $input['phone'];
-			$data['email']                           = $input['email'];
-			$data['charts']                          = [];
+			$data['id']                             = ""; 
+			$data['grant_id']                       = $input['grant_id'];
+			$data['grant_name']                     = $input['grant_name'];
+			$data['client_id']                      = $input['client_id'];
+			$data['user_id']                        = $input['user_id'];
+			$data['scopes'][0]						= 'employee';
 		}
 
 		//3. post to API
-		$APIAcl                                  = new APIAcl;
+		$APIAcl                                  	= new APIAcl;
 		$result                                     = $APIAcl->postData($client_id,$data);
+
+		dd($result);
 
 		//4. return response 
 		if($result['status'] != 'success')
@@ -359,7 +361,7 @@ class AclController extends BaseController
 			$this->page_attributes->msg             = "Data ACL Telah Ditambahkan";           
 		}
 
-		return $this->generateRedirectRoute('org.show',['id' => $client_id]);        
+		return $this->generateRedirectRoute('acl.index',['id' => $client_id]);        
 	}
 
 	/**

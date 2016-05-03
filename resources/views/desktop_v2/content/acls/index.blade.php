@@ -16,7 +16,7 @@
 			<input type="input" class="form-control" name="q" placeholder="Searching...">
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 text-xs-right">
-			<a href="" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Add New ACL</a>
+			<a href="{{ route('acls.create', ['id' => $page_datas->datas['client']['id']]) }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Add New ACL</a>
 		</div>
 	</div>
 	<div class="row">

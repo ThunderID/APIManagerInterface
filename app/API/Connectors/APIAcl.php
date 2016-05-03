@@ -56,8 +56,8 @@ class APIAcl extends APIData
 	 */
 	public function postData($client_id = 0, $data)
 	{
-		$this->apiUrl 					= '/my/app'.'/'.$client_id.'/acl/store';
-		$this->apiData 					= array_merge($this->apiData, ["acl" => $data]);
+		$this->apiUrl 					= '/my/app/acl/store';
+		$this->apiData 					= array_merge($this->apiData, $data);
 
 		return $this->post();
 	}	

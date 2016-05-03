@@ -23,7 +23,10 @@
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Key</label>
-					{!! Form::text('key', null, ['class' => 'form-control']) !!}
+					<div class="input-group">
+						{!! Form::text('key', null, ['class' => 'form-control']) !!} &nbsp;&nbsp;
+						<a href="#" class="btn btn-secondary btn-md white-hover-text">Generate</a>
+					</div>
 				</fieldset>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -33,10 +36,14 @@
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Secret</label>
-					{!! Form::text('secret', null, ['class' => 'form-control']) !!}
+					<div class="input-group">
+						{!! Form::text('secret', null, ['class' => 'form-control']) !!} &nbsp;&nbsp;
+						<a href="#" class="btn btn-secondary btn-md white-hover-text">Generate</a>
+					</div>
 				</fieldset>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-right pt-xl">
+				<a href="{{ route('apps.index') }}" class="btn btn-secondary btn-md white-hover-text">Cancel</a> &nbsp;
 				{!! Form::submit('Save', ['class' => 'btn btn-primary btn-md']) !!}
 			</div>
 		</div>

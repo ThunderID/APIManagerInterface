@@ -5562,7 +5562,8 @@ b {
   z-index: 999; }
 
 .menu-user {
-  background-color: transparent !important; }
+  background-color: transparent !important;
+  outline: none !important; }
 
 .inline {
   display: inline; }

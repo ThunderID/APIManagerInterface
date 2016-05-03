@@ -1,4 +1,4 @@
-@extends('desktop_v2.wireframe')
+@extends('desktop_v2.wireframe_full')
 
 @section('content')
 <div class="container">
@@ -7,9 +7,6 @@
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
 					<a class="nav-link active p-x-2" href="#">APPS</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link p-x-2" href="#">ACL</a>
 				</li>
 			</ul>
 		</div>
@@ -39,11 +36,6 @@
 					@endforeach
 				</tbody>
 			</table>
-		</div>
-	</div>
-	<div class="row m-t-3 text-xs-center">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<p class="text-muted text-12">&copy; 2016 Thunder Lab Indonesia</p>
 		</div>
 	</div>
 </div>

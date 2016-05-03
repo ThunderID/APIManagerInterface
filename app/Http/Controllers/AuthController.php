@@ -58,4 +58,26 @@ class AuthController extends BaseController
 
 		return $this->generateRedirectRoute('apps.index');        
 	}
+
+	public function getLogout()
+	{
+		$APIAuth						= new APIAuth;
+		$credentials['grant_type']		= 'destroy_session';
+		$credentials['HTTP_HOST']		= env('OAUTH_HOST', 'apimanager');
+
+		$result							= $APIAuth->loggedOut($credentials);
+
+		if($result['status'] != 'success')
+		{
+			$this->errors                           = $result['message'];
+		}
+		else
+		{
+			Session::flush();
+		}
+
+		$this->page_attributes->msg		= "Logged Out";
+
+		return $this->generateRedirectRoute('auth.getLogin');        
+	}
 }

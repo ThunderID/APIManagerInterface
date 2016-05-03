@@ -19,6 +19,8 @@ Route::group(['middleware' => 'web'], function() {
 	Route::post('/logging',						['uses' => 'AuthController@postLogin', 'as' => 'auth.postLogin']);
 
 	Route::resource('/my/apps', 				'AppController',		['names' => ['index' => 'apps.index', 'create' => 'apps.create', 'store' => 'apps.store', 'show' => 'apps.show', 'edit' => 'apps.edit', 'update' => 'apps.update', 'destroy' => 'apps.destroy']]);
+	
+	Route::resource('/my/app/{client_id?}/acls',	'AclController',		['names' => ['index' => 'acls.index', 'create' => 'acls.create', 'store' => 'acls.store', 'show' => 'acls.show', 'edit' => 'acls.edit', 'update' => 'acls.update', 'destroy' => 'acls.destroy']]);
 
 	Route::get('/', function () {
 	    return view('welcome');

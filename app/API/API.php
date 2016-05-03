@@ -18,7 +18,7 @@ class API
 	// protected $domain			= 'http://192.168.1.118';
 	protected $domain			= 'http://apimanager';
 	protected $port				= null;
-	public $timeout				= 2;
+	public $timeout				= 200;
 	public $basic_url;
 
 	public function __construct()

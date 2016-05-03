@@ -1,4 +1,4 @@
-@extends('desktop_v2.wireframe_full')
+@extends('desktop_v2.wireframe_blank')
 
 @section('content')
 
@@ -12,26 +12,17 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 center-block white">
-			<form action="{{route('auth.postLogin')}}" method="post" class="form p-a-2">
-				<input name="grant_type" value="password" type="hidden">
-				<input name="key" value="{{ env('OAUTH_KEY', '') }}" type="hidden">
-				<input name="secret" value="{{ env('OAUTH_SECRET', '') }}" type="hidden">
-				<input name="HTTP_HOST" value="{{ env('OAUTH_HOST', '') }}" type="hidden">
+			{!! Form::open(['url' => route('auth.postLogin'), 'class' => 'form p-a-2']) !!}
 				<fieldset class="form-group">
 					<label>Username</label>
-					<input type="text" name="username" class="form-control" placeholder="examplegmail.com">
+					{!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'example']) !!}
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Password</label>
-					<input type="password" name="password" class="form-control" placeholder="************">
+					{!! Form::password('password', ['class' => 'form-control', 'placeholder' => '********']) !!}
 				</fieldset>
-				<input type="submit" value="Sign In" class="btn btn-primary btn-block">
-			</form>
-		</div>
-	</div>
-	<div class="row m-t-3 text-xs-center">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<p class="text-muted text-12">&copy; 2016 Thunder Lab Indonesia</p>
+				{!! Form::submit('Sign In', ['class' => 'btn btn-primary btn-block']) !!}
+			{!! Form::close() !!}
 		</div>
 	</div>
 </div>

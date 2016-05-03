@@ -1,4 +1,4 @@
-@extends('desktop_v2.wireframe')
+@extends('desktop_v2.wireframe_full')
 
 @section('content')
 <div class="container">
@@ -19,7 +19,7 @@
 			<input type="input" class="form-control" name="q" placeholder="Searching...">
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 text-xs-right">
-			<a href="" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Add New Apps</a>
+			<a href="{{ route('apps.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Add New Apps</a>
 		</div>
 	</div>
 	<div class="row">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="{{ isset($login) ? 'gray-lightest' : '' }}">
+<html lang="id">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
 		<title>THUNDER - APIManager</title>
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{{ '/css/app.css' }}" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="{{ elixir('css/app.css') }}" media="screen" title="no title" charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
 		<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
@@ -21,10 +21,14 @@
 
 		@yield('css')
 	</head>
-	<body class="gray-lightest font-black">
-		<section class="">
+	<body class="font-black fixed-worksppace">
+		@include('desktop_v2.components.nav')		
+
+		<section>
 			@yield('content')
 		</section>
+
+		@include('desktop_v2.components.footer')
 
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

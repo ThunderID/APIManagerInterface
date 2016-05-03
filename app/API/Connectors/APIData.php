@@ -74,7 +74,7 @@ abstract class APIData
 			{
 				$queryString 		= $queryString . $title . "=" . $data . "&";
 			}		
-		}
+		}		
 
 		$queryString 				= str_replace(' ', '%20', $queryString);
 

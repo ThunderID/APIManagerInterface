@@ -2920,7 +2920,8 @@ input[type="button"].btn-block {
   .nav-tabs .nav-item.open .nav-link:hover {
     color: #55595c;
     background-color: #fff;
-    border-color: #ddd #ddd #1B95E0; }
+    border-color: #ddd #ddd #1B95E0;
+    border-bottom-width: 3px; }
 
 .nav-pills::after {
   content: "";
@@ -5559,6 +5560,9 @@ b {
   bottom: 20px;
   right: 20px;
   z-index: 999; }
+
+.menu-user {
+  background-color: transparent !important; }
 
 .inline {
   display: inline; }

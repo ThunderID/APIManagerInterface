@@ -15,8 +15,7 @@
 Route::group(['middleware' => 'web'], function() {
 
 	Route::get('/login',						['uses' => 'AuthController@getLogin', 'as' => 'auth.getLogin']);
-	
-	Route::post('/logging',						['uses' => 'AuthController@postLogin', 'as' => 'auth.postLogin']);
+		Route::post('/logging',						['uses' => 'AuthController@postLogin', 'as' => 'auth.postLogin']);
 
 	Route::get('/logout',						['uses' => 'AuthController@getLogout', 'as' => 'auth.getLogout']);
 

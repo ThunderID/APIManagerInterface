@@ -70,7 +70,7 @@ class APIApp extends APIData
 	 */
 	public function getShow($id)
 	{
-		$this->apiUrl 					= '/my/app/' . $id;
+		$this->apiUrl 					= '/my/app/' . $id . '/show';
 
 		return $this->get();
 	}	

@@ -19,33 +19,13 @@
 			<input type="input" class="form-control" name="q" placeholder="Searching...">
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 text-xs-right">
-			<a href="" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Add New Apps</a>
+			<a href="" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Add New ACL</a>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<table class="table">
 				<tbody>
-					@foreach($page_datas->datas['apps']['data'] as $key => $value)
-						<tr>
-							<th scope="row">{{$key + 1}}</th>
-							<td>{{$value['name']}}</td>
-							<td>{{$value['domain']}}</td>
-							<td>
-								@foreach($value['grants'] as $key2 => $value2)
-									@if($value2['name']!='owned')
-										{{$value2['name']}}
-										<span class="font-size-10">scopes</span>
-										<br/>
-									@endif
-								@endforeach
-							</td>
-							<td class="text-xs-right">
-								<a href="" class="btn btn-secondary white-hover-text btn-sm">Edit</a>
-								<a href="" class="btn btn-secondary white-hover-text btn-sm">Delete</a>
-							</td>
-						</tr>
-					@endforeach
 				</tbody>
 			</table>
 		</div>

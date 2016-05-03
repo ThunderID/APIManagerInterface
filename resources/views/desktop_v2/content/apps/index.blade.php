@@ -21,24 +21,33 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<table class="table">
+			<table class="table text-14">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Name</th>
+						<th>Domain</th>
+						<th>Scopes</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
 				<tbody>
 					@foreach($page_datas->datas['apps']['data'] as $key => $value)
 						<tr>
 							<th scope="row">{{$key + 1}}</th>
-							<td>{{$value['name']}}</td>
-							<td>{{$value['domain']}}</td>
+							<td>{{ $value['name'] }}</td>
+							<td>{{ $value['domain'] }}</td>
 							<td>
 								@foreach($value['grants'] as $key2 => $value2)
 									@if($value2['name']!='owned')
-										{{$value2['name']}}
+										{{ $value2['name'] }}
 										<span class="font-size-10">scopes</span>
 										<br/>
 									@endif
 								@endforeach
 							</td>
 							<td class="text-xs-right">
-								<a href="{{route('acls.index', ['client_id' => $value['id']])}}" class="btn btn-secondary white-hover-text btn-sm">ACL</a>
+								<a href="{{ route('acls.index', ['client_id' => $value['id']]) }}" class="btn btn-secondary white-hover-text btn-sm">ACL</a>
 								<a href="" class="btn btn-secondary white-hover-text btn-sm">Edit</a>
 								<a href="" class="btn btn-secondary white-hover-text btn-sm">Delete</a>
 							</td>
@@ -46,11 +55,6 @@
 					@endforeach
 				</tbody>
 			</table>
-		</div>
-	</div>
-	<div class="row m-t-3 text-xs-center">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<p class="text-muted text-12">&copy; 2016 Thunder Lab Indonesia</p>
 		</div>
 	</div>
 </div>

@@ -30,10 +30,9 @@
 				</a>
 				<div class="dropdown pull-xs-right pt-s">
 					<button class="btn dropdown-toggle menu-user text-14" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fa fa-user"></i> &nbsp; Administrator
+						<i class="fa fa-user"></i> &nbsp; {{Session::get('whoami')['name']}}
 					</button>
 					<div class="dropdown-menu menu-user-item text-14" aria-labelledby="dropdownMenu1">
-						<a class="dropdown-item" href="#">Change Password</a>
 						<a class="dropdown-item" href="{{route('auth.getLogout')}}">Sign Out</a>
 					</div>
 				</div>

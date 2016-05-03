@@ -1,4 +1,4 @@
-@extends('desktop_v2.wireframe')
+@extends('desktop_v2.wireframe_full')
 
 @section('content')
 <div class="container">

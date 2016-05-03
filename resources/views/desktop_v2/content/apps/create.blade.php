@@ -8,9 +8,6 @@
 				<li class="nav-item">
 					<a class="nav-link active p-x-2" href="#">APPS</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link p-x-2" href="#">ACL</a>
-				</li>
 			</ul>
 		</div>
 	</div>

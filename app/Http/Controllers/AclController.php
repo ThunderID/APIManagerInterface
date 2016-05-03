@@ -344,8 +344,6 @@ class AclController extends BaseController
 		$APIAcl                                  	= new APIAcl;
 		$result                                     = $APIAcl->postData($client_id,$data);
 
-		dd($result);
-
 		//4. return response 
 		if($result['status'] != 'success')
 		{
@@ -361,7 +359,7 @@ class AclController extends BaseController
 			$this->page_attributes->msg             = "Data ACL Telah Ditambahkan";           
 		}
 
-		return $this->generateRedirectRoute('acl.index',['id' => $client_id]);        
+		return $this->generateRedirectRoute('acls.index',['id' => $client_id]);        
 	}
 
 	/**

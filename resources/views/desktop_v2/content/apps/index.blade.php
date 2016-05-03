@@ -1,4 +1,4 @@
-@extends('wireframe')
+@extends('desktop_v2.wireframe')
 
 @section('content')
 <div class="container">
@@ -16,7 +16,7 @@
 	</div>
 	<div class="row m-b-1">
 		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-			<input type="input" class="form-control" name="search[name]" placeholder="Searching...">
+			<input type="input" class="form-control" name="q" placeholder="Searching...">
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 text-xs-right">
 			<a href="" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Add New Apps</a>
@@ -26,13 +26,13 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<table class="table">
 				<tbody>
-					@foreach($clients as $key => $value)
+					@foreach($page_datas->datas['apps']['data'] as $key => $value)
 						<tr>
 							<th scope="row">{{$key + 1}}</th>
-							<td>{{$value['client']['name']}}</td>
-							<td>{{$value['client']['domain']}}</td>
+							<td>{{$value['name']}}</td>
+							<td>{{$value['domain']}}</td>
 							<td>
-								@foreach($value['client']['grants'] as $key2 => $value2)
+								@foreach($value['grants'] as $key2 => $value2)
 									@if($value2['name']!='owned')
 										{{$value2['name']}}
 										<span class="font-size-10">scopes</span>

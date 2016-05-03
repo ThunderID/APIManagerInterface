@@ -16,7 +16,7 @@ use GuzzleHttp\Client;
 class API
 {
 	// protected $domain			= 'http://192.168.1.118';
-	protected $domain			= 'http://hris-api';
+	protected $domain			= 'http://apimanager';
 	protected $port				= null;
 	public $timeout				= 2;
 	public $basic_url;

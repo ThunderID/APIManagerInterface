@@ -31,6 +31,7 @@ class AuthController extends BaseController
 
 		$credentials['key']				= env('OAUTH_KEY', 'localhost');
 		$credentials['secret']			= env('OAUTH_SECRET', 'localhost');
+		$credentials['HTTP_HOST']		= env('OAUTH_HOST', 'apimanager');
 		$credentials['grant_type']		= 'owned';
 
 		$APIAuth						= new APIAuth;
@@ -55,6 +56,6 @@ class AuthController extends BaseController
 
 		$this->page_attributes->msg		= "Login Sukses";
 
-		return $this->generateRedirectRoute('org.index');        
+		return $this->generateRedirectRoute('apps.index');        
 	}
 }

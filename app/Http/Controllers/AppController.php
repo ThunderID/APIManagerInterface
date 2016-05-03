@@ -138,7 +138,7 @@ class AppController extends BaseController
 		//1. validate
 		if(is_null($id))
 		{
-			App::abort(403, 'Id appanisasi tidak ada');
+			App::abort(403, 'Id app tidak ada');
 		}
 
 		//2. get data
@@ -146,8 +146,8 @@ class AppController extends BaseController
 		$data                                       = $APIApp->getShow($id);        
 
 		//3. set page attributes
-		$this->page_attributes->page_title			= 'Dashboard';     
-		$this->page_attributes->page_subtitle       = 'Dashboard';     
+		$this->page_attributes->page_title			= 'API';     
+		$this->page_attributes->page_subtitle       = 'API';     
 		$this->page_attributes->breadcrumb          = array_merge(
 															$this->page_attributes->breadcrumb,
 															[$data['data']['name'] => route(Route::CurrentRouteName(),['id' => $id])]

@@ -334,7 +334,7 @@ class AppController extends BaseController
 	 * 2. return response
 	 * 
 	 */
-	public function Destroy($id)
+	public function destroy($id)
 	{
 		//1.post delete 
 		$APIApp                                     = new APIApp;
@@ -347,53 +347,8 @@ class AppController extends BaseController
 			$this->errors                           = $result['message'];
 		}
 
-		$this->page_attributes->msg                 = "Data Perusahaan ".$result['data']['name']." telah dihapus";
+		$this->page_attributes->msg                 = "Data App ".$result['data']['name']." telah dihapus";
 		
-		return $this->generateRedirectRoute('app.index'); 
-	}
-
-
-	/**
-	 * { FindappByName }
-	 *
-	 * @param     
-	 *1. name
-	 *
-	 * @return
-	 * 1. id
-	 * 2. name
-	 * 
-	 * Step:
-	 * 1. get data
-	 * 2. validate
-	 * 3. returning data
-	 */
-	public function FindappByName($name = null)
-	{
-		//1. get data
-		$APIApp                                     = new APIApp;
-		$search                                     = array_merge(
-															['name' => $name]
-														);
-
-		$app                                       = $APIApp->getIndex([
-														'search'    => $search,
-														]);
-
-		//2. validate
-		if($app['status'] != 'success')
-		{
-			return abort(404);
-		}
-
-		//3. returning data
-		$datas                                      = [];
-		foreach ($app['data']['data'] as $key => $dt) 
-		{
-			$datas[$key]['id']                      = $dt['id'];
-			$datas[$key]['name']                    = ucwords($dt['name']);
-		}                                       
-
-		return $datas;          
+		return $this->generateRedirectRoute('apps.index'); 
 	}
 }

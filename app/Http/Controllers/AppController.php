@@ -216,6 +216,15 @@ class AppController extends BaseController
 		}      
 
 		//3. set page datas
+		foreach ($data['data']['grants'] as $key => $value) {
+			if(strtolower($value['name']) != 'owned')
+			{
+				$grant[] 							= $value;
+			}
+		}
+
+		$data['data']['grant']						= $grant[0];
+		
 		$this->page_datas->datas                    = $data['data'];
 
 		//4. generate view

@@ -1,6 +1,7 @@
 @extends('desktop_v2.wireframe_full')
 
 @section('content')
+
 <div class="container">
 	<div class="row m-b-1">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -16,12 +17,12 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<fieldset class="form-group">
 					<label>Name</label>
-					{!! Form::text('name', null, ['class' => 'form-control']) !!}
+					{!! Form::text('name', $page_datas->datas['name'], ['class' => 'form-control']) !!}
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Key</label>
 					<div class="input-group">
-						{!! Form::text('key', null, ['class' => 'form-control']) !!} &nbsp;&nbsp;
+						{!! Form::text('key', $page_datas->datas['key'], ['class' => 'form-control']) !!} &nbsp;&nbsp;
 						<a href="#" class="btn btn-secondary btn-md white-hover-text">Generate</a>
 					</div>
 				</fieldset>
@@ -29,12 +30,12 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<fieldset class="form-group">
 					<label>Domain</label>
-					{!! Form::text('domain', null, ['class' => 'form-control']) !!}
+					{!! Form::text('domain', $page_datas->datas['domain'], ['class' => 'form-control']) !!}
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Secret</label>
 					<div class="input-group">
-						{!! Form::text('secret', null, ['class' => 'form-control']) !!} &nbsp;&nbsp;
+						{!! Form::text('secret', $page_datas->datas['secret'], ['class' => 'form-control']) !!} &nbsp;&nbsp;
 						<a href="#" class="btn btn-secondary btn-md white-hover-text">Generate</a>
 					</div>
 				</fieldset>
@@ -42,7 +43,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<fieldset class="form-group">
 					<label>Grant Type</label>
-					{!! Form::select('grant', ['client_credential' => 'Client Credential', 'password' => 'Password'], null, ['class' => 'c-select form-control']) !!}
+					{!! Form::select('grant', ['client_credential' => 'Client Credential', 'password' => 'Password'], $page_datas->datas['grant']['name'], ['class' => 'c-select form-control']) !!}
 				</fieldset>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

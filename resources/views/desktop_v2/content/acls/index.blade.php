@@ -23,13 +23,16 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<table class="table">
 				<tbody>
+				<?php
+					// dd();
+				?>
 					@foreach($page_datas->datas['acls'] as $key => $value)
 						<tr>
 							<td>{{$value['user']['name']}}</td>
 							<td>{{$value['scope']['name']}}</td>
 							<td>{{$page_datas->datas['client']['name']}}</td>
 							<td class="text-xs-right">
-								<a href="" class="btn btn-secondary white-hover-text btn-sm">Edit</a>
+								<a href="{{route('acls.edit',['client_id' => $page_datas->datas['client']['id'], 'id' => $value['id']])}}" class="btn btn-secondary white-hover-text btn-sm">Edit</a>
 								<a href="" class="btn btn-secondary white-hover-text btn-sm">Delete</a>
 							</td>
 						</tr>

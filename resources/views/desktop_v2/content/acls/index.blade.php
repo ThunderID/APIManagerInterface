@@ -23,9 +23,6 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<table class="table">
 				<tbody>
-				<?php
-					// dd();
-				?>
 					@foreach($page_datas->datas['acls'] as $key => $value)
 						<tr>
 							<td>{{$value['user']['name']}}</td>

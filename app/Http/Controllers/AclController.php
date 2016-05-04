@@ -154,7 +154,7 @@ class AclController extends BaseController
 															$this->page_attributes->breadcrumb,
 															[
 																$data['data']['organisation']['name'] => route('org.show', ['id' => $client_id]),
-																'ACL' => route('acl.index', ['client_id' => $client_id]),
+																'ACL' => route('acls.index', ['client_id' => $client_id]),
 																$data['data']['name'] => route(Route::CurrentRouteName(), ['client_id' => $client_id, 'id' => $id]),
 															]
 														);
@@ -214,13 +214,13 @@ class AclController extends BaseController
 			//3. set page attributes
 			$current_route                           = route(Route::CurrentRouteName(),['client_id' => $client_id ,'id' => $id]);
 
-			$this->page_attributes->page_subtitle    = 'Edit ACL '.$data['data']['name'];     
+			$this->page_attributes->page_subtitle    = 'Edit ACL '.$data['data']['user'];     
 			$this->page_attributes->breadcrumb       = array_merge(
 															$this->page_attributes->breadcrumb,
 															[
 																'Apps'		=> route('apps.show', ['id' => $client_id]),
-																'ACL' => route('acl.index', ['client_id' => $client_id]),
-																'Edit ACL ' . $data['data']['name'] => $current_route,
+																'ACL' => route('acls.index', ['client_id' => $client_id]),
+																'Edit ACL ' . $data['data']['user'] => $current_route,
 															]
 														);                           
 		}

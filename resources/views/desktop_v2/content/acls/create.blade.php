@@ -1,6 +1,22 @@
 @extends('desktop_v2.wireframe_full')
 
 @section('content')
+
+<?php
+	//id
+	$page_datas->datas['id'];
+	//grant id 
+	$page_datas->datas['acl']['grant_id'];
+	//grant name
+	$page_datas->datas['acl']['grant_name'];
+	//user id
+	$page_datas->datas['acl']['user_id'];
+	//client id
+	$page_datas->datas['acl']['client_id'];
+	//scopes
+	$page_datas->datas['acl']['scopes'];
+?>
+
 <div class="container">
 	<div class="row m-b-1">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

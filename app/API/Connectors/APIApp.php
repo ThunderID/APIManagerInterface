@@ -86,7 +86,7 @@ class APIApp extends APIData
 	 */	
 	public function deleteData($id)
 	{
-		$this->apiUrl 					= '/my/app/delete/' . $id;
+		$this->apiUrl 					= '/my/app/' . $id . '/delete';
 		$this->apiData 					= array_merge($this->apiData,  ["id" => $id]);
 
 		return $this->delete();

@@ -29,10 +29,19 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<table class="table">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Client</th>
+						<th>Domain</th>
+						<th>Grant Type</th>
+						<th></th>
+					</tr>
+				</thead>
 				<tbody>
 					@foreach($page_datas->datas['apps']['data'] as $key => $value)
 						<tr>
-							<th scope="row">{{$key + 1}}</th>
+							<td scope="row">{{$key + 1}}</td>
 							<td>{{$value['name']}}</td>
 							<td>{{$value['domain']}}</td>
 							<td>

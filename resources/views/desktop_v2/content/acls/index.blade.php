@@ -22,11 +22,26 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<table class="table">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Username</th>
+						<th>Scopes</th>
+						<th>Client</th>
+						<th></th>
+					</tr>
+				</thead>
 				<tbody>
 					@foreach($page_datas->datas['acls'] as $key => $value)
 						<tr>
+							<td scope="row">{{$key + 1}}</td>
 							<td>{{$value['user']['name']}}</td>
-							<td>{{$value['scope']['name']}}</td>
+							<td>
+								@forelse($value['scopes'] as $k => $v)
+									{{ $v['name'] }}
+								@empty
+								@endforelse
+							</td>
 							<td>{{$page_datas->datas['client']['name']}}</td>
 							<td class="text-xs-right">
 								<a href="{{route('acls.edit',['client_id' => $page_datas->datas['client']['id'], 'id' => $value['id']])}}" class="btn btn-secondary white-hover-text btn-sm">Edit</a>

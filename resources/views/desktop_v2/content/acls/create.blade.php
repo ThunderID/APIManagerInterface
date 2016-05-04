@@ -31,26 +31,26 @@
 		<div class="row m-b-1">
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<fieldset class="form-group">
-					<label>Grant Id</label>
-					{!! Form::text('grant_id', null, ['class' => 'form-control']) !!}
+					<label>Grant Name</label>
+					{!! Form::text('grant_name', null, ['class' => 'form-control']) !!}
 				</fieldset>				
 				<fieldset class="form-group">
-					<label>User Id</label>
-					{!! Form::text('user_id', null, ['class' => 'form-control']) !!}
+					<label>Client Name</label>
+					{!! Form::select('client_id', [$page_datas->datas['client']['id'] => $page_datas->datas['client']['name']], $page_datas->datas['client']['id'], ['class' => 'form-control c-select']) !!}
 				</fieldset>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<fieldset class="form-group">
-					<label>Grant Name</label>
-					{!! Form::text('grant_name', null, ['class' => 'form-control']) !!}
+					<label>User ID</label>
+					{!! Form::text('user_id', null, ['class' => 'form-control']) !!}
 				</fieldset>
 				<fieldset class="form-group">
-					<label>Client Id</label>
-					{!! Form::text('client_id', null, ['class' => 'form-control']) !!}
+					<label>Scope</label>
+					{!! Form::select('scopes', [], null, ['class' => 'form-control select-scope', 'multiple' => 'multiple']) !!}
 				</fieldset>
-
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-right pt-xl">
+				<a href="{{ route('apps.index') }}" class="btn btn-secondary btn-md white-hover-text">Cancel</a> &nbsp;
 				{!! Form::submit('Save', ['class' => 'btn btn-primary btn-md']) !!}
 			</div>
 		</div>

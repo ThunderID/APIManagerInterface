@@ -61,7 +61,3 @@
 
 <!-- End of Auth Index -->
 @stop
-
-@push('js')
-	@include('plugins.select2')
-@endpush

@@ -257,7 +257,7 @@ class AclController extends BaseController
 		$this->page_datas->datas['id']				= $client_id;
 		// $this->page_datas->datas['name']			= $org['data']['name'];
 		$this->page_datas->datas['acl']				= $data['data'];
-		// $this->page_datas->datas['acls']			= $acls['data']['data'];
+		$this->page_datas->datas['client']			= $org['data'];
 
 		//5. generate view
 		$view_source                                = $this->view_source_root . '.create';

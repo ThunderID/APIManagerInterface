@@ -104,7 +104,6 @@ class AppController extends BaseController
 														]);
 		}
 
-
 		//4. set page datas
 		$this->page_datas->datas['apps']			= $data['data'];
 
@@ -203,7 +202,7 @@ class AppController extends BaseController
 		else
 		{
 			//1. get data
-			$data                                    = null;
+			$data['data']							= null;
 
 			//2. set page attributes
 			$current_route                           = route(Route::CurrentRouteName());
@@ -216,14 +215,17 @@ class AppController extends BaseController
 		}      
 
 		//3. set page datas
-		foreach ($data['data']['grants'] as $key => $value) {
-			if(strtolower($value['name']) != 'owned')
-			{
-				$grant[] 							= $value;
+		if(isset($data['data']))
+		{
+			foreach ($data['data']['grants'] as $key => $value) {
+				if(strtolower($value['name']) != 'owned')
+				{
+					$grant[] 							= $value;
+				}
 			}
-		}
 
-		$data['data']['grant']						= $grant[0];
+			$data['data']['grant']						= $grant[0];
+		}
 		
 		$this->page_datas->datas                    = $data['data'];
 
@@ -269,28 +271,33 @@ class AppController extends BaseController
 	public function store($id = null)
 	{
 		//1. get input
-		$input['name']                              = Input::get('name');                          
-		$input['code']                              = Input::get('code');
-		$input['logo']                              = Input::get('logo');
+		$input['name']								= Input::get('name');
+		$input['key']								= Input::get('key');
+		$input['domain']							= Input::get('domain');
+		$input['secret']							= Input::get('secret');
+		$input['grants'][0]['name']					= Input::get('grant');
+		$input['grants'][0]['scopes']				= explode(',', Input::get('scopes'));
 
 		//2. get data
 		if(!is_null($id))
 		{
-			$APIApp                                  = new APIApp;
-			$data                                    = $APIApp->getShow($id)['data'];
+			$APIApp									= new APIApp;
+			$data									= $APIApp->getShow($id)['data'];
 
-			$data['name']                            = $input['name'];
-			$data['code']                            = $input['code'];
-			$data['logo']                            = $input['logo'];
+			$data['name']							= $input['name'];
+			$data['key']							= $input['key'];
+			$data['domain']							= $input['domain'];
+			$data['secret']							= $input['secret'];
+			$data['grants']							= $input['grants'];
 		}
 		else
 		{
-			$data['id']                              = ""; 
-			$data['name']                            = $input['name'];
-			$data['code']                            = $input['code'];
-			$data['logo']                            = $input['logo'];
-			$data['branches']                        = [];
-			$data['policies']                        = [];
+			$data['id']								= ""; 
+			$data['name']							= $input['name'];
+			$data['key']							= $input['key'];
+			$data['domain']							= $input['domain'];
+			$data['secret']							= $input['secret'];
+			$data['grants']							= $input['grants'];
 		}
 
 		//3. post to API
@@ -312,7 +319,7 @@ class AppController extends BaseController
 			$this->page_attributes->msg             = "Data appanisasi Telah Ditambahkan";           
 		}
 
-		return $this->generateRedirectRoute('app.index');        
+		return $this->generateRedirectRoute('apps.index');        
 	}
 
 	/**
@@ -324,7 +331,7 @@ class AppController extends BaseController
 	 * @return
 	 * 1. call function store()
 	 */
-	public function Update($app_id = null, $id = null)
+	public function update($app_id = null, $id = null)
 	{
 		return $this->store($app_id, $id);
 	}

@@ -91,7 +91,7 @@ class APIAcl extends APIData
 	 */	
 	public function deleteData($client_id = 0, $id)
 	{
-		$this->apiUrl 					= '/my/app'.'/'.$client_id.'/acl/delete/' . $id;
+		$this->apiUrl 					= '/my/app'.'/'.$client_id.'/acl/' . $id. '/delete';
 		$this->apiData 					= array_merge($this->apiData,  ["id" => $id]);
 
 		return $this->delete();

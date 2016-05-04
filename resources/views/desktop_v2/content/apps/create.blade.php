@@ -7,7 +7,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
-					<a class="nav-link active p-x-2" href="#">APPS</a>
+					<a class="nav-link active p-x-2" href="{{route('apps.index')}}">APPS</a>
 				</li>
 			</ul>
 		</div>

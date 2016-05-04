@@ -77,7 +77,7 @@ class AclController extends BaseController
 		//3. get data
 		$APIAcl										= new APIAcl;
 		$search                                     = array_merge(
-															['name' => $data_parameter['search']],
+															['username' => $data_parameter['search']],
 															$data_parameter['filter']
 														);
 		$APIAcl										= new APIAcl;
@@ -214,15 +214,21 @@ class AclController extends BaseController
 			//3. set page attributes
 			$current_route                           = route(Route::CurrentRouteName(),['client_id' => $client_id ,'id' => $id]);
 
-			$this->page_attributes->page_subtitle    = 'Edit ACL '.$data['data']['user'];     
+			$this->page_attributes->page_subtitle    = 'Edit ACL '.$data['data']['user']['name'];     
 			$this->page_attributes->breadcrumb       = array_merge(
 															$this->page_attributes->breadcrumb,
 															[
 																'Apps'		=> route('apps.show', ['id' => $client_id]),
 																'ACL' => route('acls.index', ['client_id' => $client_id]),
-																'Edit ACL ' . $data['data']['user'] => $current_route,
+																'Edit ACL ' . $data['data']['user']['name'] => $current_route,
 															]
-														);                           
+														);   
+			$data['data']['grant_id']                = $data['data']['grant']['id'];
+			$data['data']['grant_name']              = $data['data']['grant']['name'];
+			$data['data']['client_id']				 = $data['data']['grant']['client_id'];
+			$data['data']['user_id']				 = $data['data']['user_id'];
+			$data['data']['scopes'][0]				 = 'employee';
+                        
 		}
 		else
 		{
@@ -371,7 +377,7 @@ class AclController extends BaseController
 	 * @return
 	 * 1. call function store()
 	 */
-	public function Update($client_id = null, $id = null)
+	public function update($client_id = null, $id = null)
 	{
 		return $this->store($client_id, $id);
 	}
@@ -391,7 +397,7 @@ class AclController extends BaseController
 	 * 2. return response
 	 * 
 	 */
-	public function Destroy($client_id = null, $id = null)
+	public function destroy($client_id = null, $id = null)
 	{
 		//1.post delete 
 		$APIAcl                                  = new APIAcl;
@@ -406,56 +412,7 @@ class AclController extends BaseController
 
 		$this->page_attributes->msg                 = "Data ACL telah dihapus";
 		
-		return $this->generateRedirectRoute('org.show', ['client_id' => $client_id]); 
+		return $this->generateRedirectRoute('acls.index', ['client_id' => $client_id]); 
 	}
 
-	/**
-	 * { FindaclByName }
-	 *
-	 * @param     
-	 *1. name
-	 *2. org id
-	 *
-	 * @return
-	 * 1. id
-	 * 2. name
-	 * 
-	 * Step:
-	 * 1. get data
-	 * 2. validate
-	 * 3. returning data
-	 */
-	public function FindaclByName($client_id = null, $name = null)
-	{
-		//1. get data
-		if(is_null($client_id))
-		{
-			App::abort(403, 'Id Client tidak ada');
-		}
-
-		$APIAcl                                  = new APIAcl;
-		$search                                     = array_merge(
-															['name' => $name]
-														);
-
-		$acl                                       = $APIAcl->getIndex($client_id,[
-														'search'    => $search,
-														]);
-
-		//2. validate
-		if($acl['status'] != 'success')
-		{
-			return abort(404);
-		}
-
-		//3. returning data
-		$datas                                      = [];
-		foreach ($acl['data']['data'] as $key => $dt) 
-		{
-			$datas[$key]['id']                      = $dt['id'];
-			$datas[$key]['name']                    = ucwords($dt['name']);
-		}                                       
-
-		return $datas;          
-	}            
 }

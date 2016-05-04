@@ -79,11 +79,6 @@
 			</table>
 		</div>
 	</div>
-	<div class="row m-t-3 text-xs-center">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<p class="text-muted text-12">&copy; 2016 Thunder Lab Indonesia</p>
-		</div>
-	</div>
 </div>
 
 @include('desktop_v2.content.apps.scopes')
@@ -93,7 +88,6 @@
 @section('js')
 	<script type="text/javascript">
 		$('#scopes').on('show.bs.modal', function (e) {
-
 			var scope		= $(e.relatedTarget).attr('data-scope');
 			var title		= $(e.relatedTarget).attr('data-title');
 			

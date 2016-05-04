@@ -28,12 +28,20 @@
 			@yield('content')
 		</section>
 
-		@include('desktop_v2.components.footer')
+		<section class="container">
+			@include('desktop_v2.components.footer')
+		</section>
 
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="/assets/script.css"></script>
-		@yield('js')
+
+		<script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
+		<script>
+			$(document).ready(function(){
+				apimanager.init();
+			});
+		</script>
+		@stack('js')
 	</body>
 </html>

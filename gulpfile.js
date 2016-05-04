@@ -13,5 +13,6 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss')
-    .version('css/app.css');
+    .scripts(['select2.min.js', 'apimanager_ui.js', 'apimanager.js'], 'public/js/app.js')
+    .version(['js/app.js', 'css/app.css']);
 });

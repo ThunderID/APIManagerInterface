@@ -39,6 +39,18 @@
 					</div>
 				</fieldset>
 			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<fieldset class="form-group">
+					<label>Grant Type</label>
+					{!! Form::select('grant', ['client_credential' => 'Client Credential', 'password' => 'Password'], null, ['class' => 'c-select form-control']) !!}
+				</fieldset>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<fieldset class="form-group">
+					<label>Scopes</label>
+					{!! Form::select('scopes', [], null, ['class' => 'form-control select-scope', 'multiple' => 'multiple']) !!}
+				</fieldset>
+			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-xs-right pt-xl">
 				<a href="{{ route('apps.index') }}" class="btn btn-secondary btn-md white-hover-text">Cancel</a> &nbsp;
 				{!! Form::submit('Save', ['class' => 'btn btn-primary btn-md']) !!}
@@ -49,3 +61,7 @@
 
 <!-- End of Auth Index -->
 @stop
+
+@push('js')
+	@include('plugins.select2')
+@endpush

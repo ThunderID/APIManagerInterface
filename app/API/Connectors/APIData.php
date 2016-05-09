@@ -33,6 +33,11 @@ abstract class APIData
 		{
 			Redirect::route('auth.getLogin')->send();
 		}
+
+		if(isset($this->basic_url))
+		{
+			$this->api->basic_url 	= $this->basic_url;
+		}
 	}
 
 	/**

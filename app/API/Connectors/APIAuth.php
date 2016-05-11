@@ -1,7 +1,7 @@
 <?php 
 namespace App\API\Connectors;
 
-use Exception, Session;
+use Exception, Session, API;
 
 /**
  * { ApiAuth }
@@ -11,7 +11,7 @@ use Exception, Session;
  * 1. loggedIn() 						: get index from API 
  */
 
-class APIAuth extends APIData
+class APIAuth extends API
 {
 	function __construct() 
 	{

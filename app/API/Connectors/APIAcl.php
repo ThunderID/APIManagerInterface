@@ -2,7 +2,7 @@
 
 namespace App\API\Connectors;
 
-use Exception, Session;
+use Exception, Session, API;
 
 /**
  * { APIAcl }
@@ -15,7 +15,7 @@ use Exception, Session;
  * 4. deleteData() 						: delete data from API 
  */
 
-class APIAcl extends APIData
+class APIAcl extends API
 {
 	function __construct() 
 	{

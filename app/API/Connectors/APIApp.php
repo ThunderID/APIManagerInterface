@@ -1,7 +1,7 @@
 <?php 
 namespace App\API\Connectors;
 
-use Exception, Session;
+use Exception, Session, API;
 
 /**
  * { APIApp }
@@ -14,7 +14,7 @@ use Exception, Session;
  * 4. deleteData() 						: delete data from API 
  */
 
-class APIApp extends APIData
+class APIApp extends API
 {
 	function __construct() 
 	{

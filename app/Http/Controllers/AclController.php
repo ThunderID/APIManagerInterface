@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\API\Connectors\APIAcl;
 use App\API\Connectors\APIApp;
+use App\API\Connectors\APIUser;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Helper\SortList;
@@ -202,58 +203,61 @@ class AclController extends BaseController
 		}
 
 		// // 2 & 3        
-		$APIApp                                      = new APIApp;
-		$org                                         = $APIApp->getShow($client_id);  
+		$APIApp										= new APIApp;
+		$org										= $APIApp->getShow($client_id);
+
+		$APIUser									= new APIUser;
+		$users										= $APIUser->getIndex();
 
 		if(!is_null($id))
 		{
 			//2. get data
-			$APIAcl                              	 = new APIAcl;
-			$data                                    = $APIAcl->getShow($client_id, $id);  
+			$APIAcl									= new APIAcl;
+			$data									= $APIAcl->getShow($client_id, $id);  
 
 			//3. set page attributes
-			$current_route                           = route(Route::CurrentRouteName(),['client_id' => $client_id ,'id' => $id]);
+			$current_route							= route(Route::CurrentRouteName(),['client_id' => $client_id ,'id' => $id]);
 
-			$this->page_attributes->page_subtitle    = 'Edit ACL '.$data['data']['user']['name'];     
-			$this->page_attributes->breadcrumb       = array_merge(
+			$this->page_attributes->page_subtitle	= 'Edit ACL '.$data['data']['user']['name'];
+			$this->page_attributes->breadcrumb		= array_merge(
 															$this->page_attributes->breadcrumb,
 															[
 																'Apps'		=> route('apps.show', ['id' => $client_id]),
 																'ACL' => route('acls.index', ['client_id' => $client_id]),
 																'Edit ACL ' . $data['data']['user']['name'] => $current_route,
 															]
-														);   
-			$data['data']['grant_id']                = $data['data']['grant']['id'];
-			$data['data']['grant_name']              = $data['data']['grant']['name'];
-			$data['data']['client_id']				 = $data['data']['grant']['client_id'];
-			$data['data']['user_id']				 = $data['data']['user_id'];
-			$data['data']['scopes'][0]				 = 'employee';
+														);
+			$data['data']['grant_id']				= $data['data']['grant']['id'];
+			$data['data']['grant_name']				= $data['data']['grant']['name'];
+			$data['data']['client_id']				= $data['data']['grant']['client_id'];
+			$data['data']['user_id']				= $data['data']['user_id'];
+			$data['data']['scopes'][0]				= 'employee';
                         
 		}
 		else
 		{
 			//2. get data
-			$data['data']['id']                      = "";
-			$data['data']['grant_id']                = null;
-			$data['data']['grant_name']              = null;
-			$data['data']['client_id']               = null;
-			$data['data']['user_id']                 = null;
-			$data['data']['scopes'][0]				 = 'employee';
+			$data['data']['id']						= "";
+			$data['data']['grant_id']				= null;
+			$data['data']['grant_name']				= null;
+			$data['data']['client_id']				= null;
+			$data['data']['user_id']				= null;
+			$data['data']['scopes'][0]				= 'employee';
 
 
 			//3. set page attributes
-			$current_route                           = route(Route::CurrentRouteName(),['client_id' => $client_id]);
+			$current_route							= route(Route::CurrentRouteName(),['client_id' => $client_id]);
 
-			$this->page_attributes->page_subtitle    = 'ACL Baru';     
-			$this->page_attributes->breadcrumb       = array_merge(
+			$this->page_attributes->page_subtitle	= 'ACL Baru';
+			$this->page_attributes->breadcrumb		= array_merge(
 															$this->page_attributes->breadcrumb,
 															[
 																'Apps'		=> route('apps.show', ['id' => $client_id]),
 																'ACL' 		=> route('acls.index', ['client_id' => $client_id]),
 																'ACL Baru' 	=> $current_route,
 															]
-														);               
-		}      
+														);
+		}
 
 		// $APIAcl									= new APIAcl;
 		// $acls									= $APIAcl->getIndex($client_id, [
@@ -266,10 +270,10 @@ class AclController extends BaseController
 		$this->page_datas->datas['client']			= $org['data'];
 
 		//5. generate view
-		$view_source                                = $this->view_source_root . '.create';
-		$route_source                               = $current_route;
+		$view_source								= $this->view_source_root . '.create';
+		$route_source								= $current_route;
 
-		return $this->generateView($view_source, $route_source);        
+		return $this->generateView($view_source, $route_source);
 	}
 
 
@@ -318,53 +322,53 @@ class AclController extends BaseController
 		}
 
 		//2. get input
-		$input['grant_id']                          = Input::get('grant_id');                          
-		$input['grant_name']                        = Input::get('grant_name');
-		$input['client_id']                         = Input::get('client_id');
-		$input['user_id']                           = Input::get('user_id');
+		$input['grant_id']						= Input::get('grant_id');
+		$input['grant_name']					= Input::get('grant_name');
+		$input['client_id']						= Input::get('client_id');
+		$input['user_id']						= Input::get('user_id');
 
 		//3. get data
 		if(!is_null($id))
 		{
-			$APIAcl                               	= new APIAcl;
-			$data                                   = $APIAcl->getShow($client_id,$id)['data'];
+			$APIAcl								= new APIAcl;
+			$data								= $APIAcl->getShow($client_id,$id)['data'];
 
-			$data['grant_id']                       = $input['grant_id'];
-			$data['grant_name']                     = $input['grant_name'];
-			$data['client_id']                      = $input['client_id'];
-			$data['user_id']                        = $input['user_id'];
-			$data['scopes'][0]						= 'employee';
+			$data['grant_id']					= $input['grant_id'];
+			$data['grant_name']					= $input['grant_name'];
+			$data['client_id']					= $input['client_id'];
+			$data['user_id']					= $input['user_id'];
+			$data['scopes'][0]					= 'employee';
 		}
 		else
 		{
-			$data['id']                             = ""; 
-			$data['grant_id']                       = $input['grant_id'];
-			$data['grant_name']                     = $input['grant_name'];
-			$data['client_id']                      = $input['client_id'];
-			$data['user_id']                        = $input['user_id'];
-			$data['scopes'][0]						= 'employee';
+			$data['id']							= ""; 
+			$data['grant_id']					= $input['grant_id'];
+			$data['grant_name']					= $input['grant_name'];
+			$data['client_id']					= $input['client_id'];
+			$data['user_id']					= $input['user_id'];
+			$data['scopes'][0]					= 'employee';
 		}
 
 		//3. post to API
-		$APIAcl                                  	= new APIAcl;
-		$result                                     = $APIAcl->postData($client_id,$data);
+		$APIAcl									= new APIAcl;
+		$result									= $APIAcl->postData($client_id,$data);
 
 		//4. return response 
 		if($result['status'] != 'success')
 		{
-			$this->errors                           = $result['message'];
+			$this->errors						= $result['message'];
 		}
 
 		if(!empty($id))
 		{
-		   $this->page_attributes->msg              = "Data ACL Telah Diedit";
+		   $this->page_attributes->msg			= "Data ACL Telah Diedit";
 		}
 		else
 		{
-			$this->page_attributes->msg             = "Data ACL Telah Ditambahkan";           
+			$this->page_attributes->msg			= "Data ACL Telah Ditambahkan";
 		}
 
-		return $this->generateRedirectRoute('acls.index',['id' => $client_id]);        
+		return $this->generateRedirectRoute('acls.index',['id' => $client_id]);
 	}
 
 	/**
@@ -400,19 +404,65 @@ class AclController extends BaseController
 	public function destroy($client_id = null, $id = null)
 	{
 		//1.post delete 
-		$APIAcl                                  = new APIAcl;
+		$APIAcl									= new APIAcl;
 
-		$result                                     = $APIAcl->deleteData($client_id, $id);
+		$result									= $APIAcl->deleteData($client_id, $id);
 
 		//2. return response
 		if($result['status'] != 'success')
 		{
-			$this->errors                           = $result['message'];
+			$this->errors						= $result['message'];
 		}
 
-		$this->page_attributes->msg                 = "Data ACL telah dihapus";
+		$this->page_attributes->msg				= "Data ACL telah dihapus";
 		
 		return $this->generateRedirectRoute('acls.index', ['client_id' => $client_id]); 
 	}
+
+	/**
+	 * { FindUserByName }
+	 *
+	 * @param     
+	 *1. name
+	 *2. org id
+	 *
+	 * @return
+	 * 1. id
+	 * 2. name
+	 * 
+	 * Step:
+	 * 1. get data
+	 * 2. validate
+	 * 3. returning data
+	 */
+	public function FindUserByName()
+	{
+		$APIUser                                  	= new APIUser;
+		$search                                   	 = array_merge(
+															['name' => Input::get('term')]
+														);
+
+		$chart                                     = $APIUser->getIndex([
+														'search'    => $search,
+														]);
+
+		//2. validate
+		if($chart['status'] != 'success')
+		{
+			return abort(404);
+		}
+
+		//3. returning data
+		$datas                                      = [];
+		foreach ($chart['data']['data'] as $key => $dt) 
+		{
+			$datas[$key]['id']                      = $dt['id'];
+			$datas[$key]['name']                    = ucwords($dt['name']);
+		}                                       
+
+		return $datas;
+	}
+
+
 
 }

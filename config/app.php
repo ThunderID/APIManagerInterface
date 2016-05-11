@@ -160,6 +160,9 @@ return [
          * Plugins
          */
         Collective\Html\HtmlServiceProvider::class,
+
+
+        ThunderID\APIHelper\ThunderAPIHelperServiceProvider::class,
     ],
 
     /*
@@ -208,7 +211,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'API' => ThunderID\APIHelper\API\APIData::class,
     ],
 
 ];

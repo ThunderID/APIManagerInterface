@@ -49,6 +49,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'password.needed' => \App\Http\Middleware\PasswordNeeded::class,
-        // 'expire.token' => \App\Http\Middleware\ExpireToken::class,
+        'expire.token' => \ThunderID\APIHelper\Middleware\ExpireTokenMiddleware::class,
     ];
 }

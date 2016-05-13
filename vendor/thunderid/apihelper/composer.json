@@ -1,0 +1,23 @@
+{
+    "name": "thunderid/apihelper",
+    "description": "",
+    "authors": [
+        {
+            "name": "budi",
+            "email": "dev.budi.purnomo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "5.*",
+        "guzzlehttp/guzzle": "~5.3"
+    },
+    "autoload": {
+        "classmap": [
+        ],
+        "psr-4": {
+            "ThunderID\\APIHelper\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

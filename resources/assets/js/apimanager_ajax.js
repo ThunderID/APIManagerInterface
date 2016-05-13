@@ -6,17 +6,21 @@
 				callback(result);
 		    }});
 		}
+	},
 
+	init_generateKey: function(url){
 		$( "#generateKey" ).click(function() {
 			//loading state
 			$("#inputKey").val('Generating');
 
 			//processing
-			ajax("{!! route('generate.key') !!}", function(data) { 
+			ajax(url, function(data) { 
 				$("#inputKey").val(data.data);
 		    });
 		});
+	}
 
+	init_generateSecret: function(url){
 		$( "#generateSecret" ).click(function() {
 			//loading state
 			$("#inputSecret").val('Generating');
@@ -26,5 +30,6 @@
 				$("#inputSecret").val(data.data);
 		    });
 		});	
-	},
+	}
+
 }

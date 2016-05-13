@@ -7,8 +7,41 @@ c(a.element).is("option")?(a.element.selected=!1,void this.$element.trigger("cha
 			tags: true
 		});
 	},
+
+	select_user: function(preload_data_user){
+		var action = $('.select-user').attr('data-route');
+
+		$('.select-user').select2({
+		placeholder: 'Masukkan nama karyawan',
+		minimumInputLength: 3,
+		data: preload_data_user,
+		tags: false,
+		ajax: {
+			url: action,
+			dataType: 'json',
+			data: function (term) {
+				return {
+					term
+				};
+			},
+			processResults: function (data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+
+            },
+
+			}
+		});	
+	},
+
 	init: function(){
+		var preload_data_user	= $('.select-user').attr('data-user');
 		this.select_scope();
+		this.select_user(preload_data_user);
 	}
 };
 
@@ -17,12 +50,40 @@ c(a.element).is("option")?(a.element.selected=!1,void this.$element.trigger("cha
 		apimanager_select2.init();
 	}
 }
+; var apimanager_ajax = { 
+
+	init: function(){
+		var ajax = function(url, callback) {
+			$.ajax({url: url, success: function(result){
+				callback(result);
+		    }});
+		}
+
+		$( "#generateKey" ).click(function() {
+			//loading state
+			$("#inputKey").val('Generating');
+
+			//processing
+			ajax("{!! route('generate.key') !!}", function(data) { 
+				$("#inputKey").val(data.data);
+		    });
+		});
+
+		$( "#generateSecret" ).click(function() {
+			//loading state
+			$("#inputSecret").val('Generating');
+			
+			//processing
+			ajax("{!! route('generate.secret') !!}", function(data) { 
+				$("#inputSecret").val(data.data);
+		    });
+		});	
+	},
+}
 ; var apimanager = {
 	init	: function(){
 		apimanager_ui.init();
+		apimanager_ajax.init();
 	}
 };
-
-
-
 //# sourceMappingURL=app.js.map

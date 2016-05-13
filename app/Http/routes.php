@@ -20,7 +20,7 @@ Route::group(['middleware' => 'web'], function() {
 
 	Route::get('/logout',						['uses' => 'AuthController@getLogout', 'as' => 'auth.getLogout']);
 
-	Route::group([], function() 
+	Route::group(['middleware' => 'expire.token'], function() 
 	{
 		Route::resource('/my/apps',						'AppController',		['names' => ['index' => 'apps.index', 'create' => 'apps.create', 'store' => 'apps.store', 'show' => 'apps.show', 'edit' => 'apps.edit', 'update' => 'apps.update', 'destroy' => 'apps.destroy']]);
 

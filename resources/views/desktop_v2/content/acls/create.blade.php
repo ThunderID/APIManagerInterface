@@ -32,7 +32,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<fieldset class="form-group">
 					<label>Grant Name</label>
-					{!! Form::text('grant_name', null, ['class' => 'form-control']) !!}
+					{!! Form::text('grant_name', $page_datas->datas['acl']['grant_name'], ['class' => 'form-control']) !!}
 				</fieldset>				
 				<fieldset class="form-group">
 					<label>Client Name</label>

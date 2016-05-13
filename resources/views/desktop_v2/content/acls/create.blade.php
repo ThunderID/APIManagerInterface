@@ -41,8 +41,8 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<fieldset class="form-group">
-					<label>User ID</label>
-					{!! Form::text('user_id', null, ['class' => 'form-control']) !!}
+					<label>User</label>
+					{!! Form::select('user_id', [], null, ['class' => 'form-control select-user', 'data-route' => route('acls.get.user'), 'multiple' => 'multiple']) !!}
 				</fieldset>
 				<fieldset class="form-group">
 					<label>Scope</label>

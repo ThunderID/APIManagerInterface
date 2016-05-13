@@ -2,7 +2,7 @@
 
 namespace App\API\Connectors;
 
-use Exception, Session;
+use Exception, Session, API;
 
 /**
  * { APIUser }
@@ -12,7 +12,7 @@ use Exception, Session;
  * 1. getIndex() 						: get index from API 
  */
 
-class APIUser extends APIData
+class APIUser extends API
 {
 	function __construct() 
 	{

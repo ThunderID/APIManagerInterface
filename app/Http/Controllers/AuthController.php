@@ -40,7 +40,7 @@ class AuthController extends BaseController
 
 		if($result['status'] != 'success')
 		{
-			$this->errors                           = $result['message'];
+			$this->errors				= $result['message'];
 		}
 		else
 		{

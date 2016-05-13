@@ -16,9 +16,9 @@ class APIUser extends API
 {
 	function __construct() 
 	{
-		$this->basic_url 				= 'http://hris-api';
-		
 		parent::__construct();
+
+		$this->api->basic_url 				= 'http://hris-api';
 	}
 
 	/**

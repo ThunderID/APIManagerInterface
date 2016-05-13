@@ -457,7 +457,7 @@ class AclController extends BaseController
 		foreach ($chart['data']['data'] as $key => $dt) 
 		{
 			$datas[$key]['id']                      = $dt['id'];
-			$datas[$key]['name']                    = ucwords($dt['name']);
+			$datas[$key]['text']                    = ucwords($dt['name']);
 		}                                       
 
 		return $datas;

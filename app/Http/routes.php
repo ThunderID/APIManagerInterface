@@ -27,5 +27,8 @@ Route::group(['middleware' => 'web'], function() {
 		Route::resource('/my/app/{client_id?}/acls',	'AclController',		['names' => ['index' => 'acls.index', 'create' => 'acls.create', 'store' => 'acls.store', 'show' => 'acls.show', 'edit' => 'acls.edit', 'update' => 'acls.update', 'destroy' => 'acls.destroy']]);
 		
 		Route::get('/my/users',							['uses' => 'AclController@FindUserByName', 'as' => 'acls.get.user']);
+	
+		Route::get('/generate/key', 				['uses' => 'AppController@generateKey', 'as' => 'generate.key']);
+		Route::get('/generate/secret', 			['uses' => 'AppController@generateSecret', 'as' => 'generate.secret']);
 	});
 });

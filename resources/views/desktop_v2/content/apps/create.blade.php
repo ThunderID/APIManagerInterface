@@ -1,7 +1,6 @@
 @extends('desktop_v2.wireframe_full')
 
 @section('content')
-
 <div class="container">
 	<div class="row m-b-1">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -22,8 +21,8 @@
 				<fieldset class="form-group">
 					<label>Key</label>
 					<div class="input-group">
-						{!! Form::text('key', $page_datas->datas['key'], ['class' => 'form-control']) !!} &nbsp;&nbsp;
-						<a href="#" class="btn btn-secondary btn-md white-hover-text">Generate</a>
+						{!! Form::text('key', $page_datas->datas['key'], ['class' => 'form-control', 'id' => 'inputKey']) !!} &nbsp;&nbsp;
+						<a href="#" id='generateKey' class="btn btn-secondary btn-md white-hover-text">Generate</a>
 					</div>
 				</fieldset>
 			</div>
@@ -35,8 +34,8 @@
 				<fieldset class="form-group">
 					<label>Secret</label>
 					<div class="input-group">
-						{!! Form::text('secret', $page_datas->datas['secret'], ['class' => 'form-control']) !!} &nbsp;&nbsp;
-						<a href="#" class="btn btn-secondary btn-md white-hover-text">Generate</a>
+						{!! Form::text('secret', $page_datas->datas['secret'], ['class' => 'form-control', 'id' => 'inputSecret']) !!} &nbsp;&nbsp;
+						<a href="#" id='generateSecret' class="btn btn-secondary btn-md white-hover-text">Generate</a>
 					</div>
 				</fieldset>
 			</div>
@@ -59,6 +58,36 @@
 		</div>
 	{!! Form::close() !!}
 </div>
-
 <!-- End of Auth Index -->
+@stop
+
+
+@section('js')
+<script type="text/javascript">
+	$( "#generateKey" ).click(function() {
+		//loading state
+		$("#inputKey").val('Generating');
+
+		//processing
+		ajax("{!! route('generate.key') !!}", function(data) { 
+			$("#inputKey").val(data.data);
+	    });
+	});
+
+	$( "#generateSecret" ).click(function() {
+		//loading state
+		$("#inputSecret").val('Generating');
+		
+		//processing
+		ajax("{!! route('generate.secret') !!}", function(data) { 
+			$("#inputSecret").val(data.data);
+	    });
+	});
+
+	var ajax = function(url, callback) {
+		$.ajax({url: url, success: function(result){
+			callback(result);
+	    }});
+	}
+</script>
 @stop

@@ -6,7 +6,7 @@ use App\API\Connectors\APIApp;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Helper\SortList;
-use Input, Route;
+use Input, Route, Response;
 
 /**
  * { AppController Class }
@@ -367,4 +367,25 @@ class AppController extends BaseController
 		
 		return $this->generateRedirectRoute('apps.index'); 
 	}
+
+	/**
+	 * { FindUserByName }
+	 *
+	 * @param     
+	 *
+	 * @return
+	 * 
+	 * Step:
+	 */
+	public function generateKey()
+	{
+		$data 										= sha1(md5(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)));
+		return Response::json(['data' => $data], 200);
+	}
+
+	public function generateSecret()
+	{
+		$data 										= sha1(md5(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)));
+		return Response::json(['data' => $data], 200);
+	}	
 }

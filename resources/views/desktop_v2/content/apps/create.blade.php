@@ -60,34 +60,3 @@
 </div>
 <!-- End of Auth Index -->
 @stop
-
-
-@section('js')
-<script type="text/javascript">
-	$( "#generateKey" ).click(function() {
-		//loading state
-		$("#inputKey").val('Generating');
-
-		//processing
-		ajax("{!! route('generate.key') !!}", function(data) { 
-			$("#inputKey").val(data.data);
-	    });
-	});
-
-	$( "#generateSecret" ).click(function() {
-		//loading state
-		$("#inputSecret").val('Generating');
-		
-		//processing
-		ajax("{!! route('generate.secret') !!}", function(data) { 
-			$("#inputSecret").val(data.data);
-	    });
-	});
-
-	var ajax = function(url, callback) {
-		$.ajax({url: url, success: function(result){
-			callback(result);
-	    }});
-	}
-</script>
-@stop

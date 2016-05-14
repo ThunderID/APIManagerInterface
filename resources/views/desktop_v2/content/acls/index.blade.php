@@ -37,10 +37,7 @@
 							<td scope="row">{{$key + 1}}</td>
 							<td>{{$value['user']['name']}}</td>
 							<td>
-								@forelse($value['scopes'] as $k => $v)
-									{{ $v['name'] }}
-								@empty
-								@endforelse
+								{{ $value['scope']['name'] }}
 							</td>
 							<td>{{$page_datas->datas['client']['name']}}</td>
 							<td class="text-xs-right">

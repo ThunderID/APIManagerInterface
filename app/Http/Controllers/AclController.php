@@ -89,7 +89,6 @@ class AclController extends BaseController
 														'take'      => $data_parameter['take'],
 														'skip'      => ($data_parameter['page'] - 1) * $data_parameter['take'],
 														]);
-
 		//4. set page datas
 		$this->page_datas->datas['acls']			= $data['data']['data'];
 		$this->page_datas->datas['client']			= $data['data']['client'];
@@ -326,6 +325,7 @@ class AclController extends BaseController
 		$input['grant_name']					= Input::get('grant_name');
 		$input['client_id']						= Input::get('client_id');
 		$input['user_id']						= Input::get('user_id');
+		$input['scopes']						= Input::get('scopes');
 
 		//3. get data
 		if(!is_null($id))
@@ -333,20 +333,19 @@ class AclController extends BaseController
 			$APIAcl								= new APIAcl;
 			$data								= $APIAcl->getShow($client_id,$id)['data'];
 
-			$data['grant_id']					= $input['grant_id'];
-			$data['grant_name']					= $input['grant_name'];
-			$data['client_id']					= $input['client_id'];
-			$data['user_id']					= $input['user_id'];
-			$data['scopes'][0]					= 'employee';
+			$data['id']							= $input['grant_id'];
+			$data['name']						= $input['grant_name'];
+			$data['client']['id']				= $input['client_id'];
+			$data['user']['id']					= $input['user_id'];
+			$data['scopes']						= explode(',', $input['scopes']);
 		}
 		else
 		{
-			$data['id']							= ""; 
-			$data['grant_id']					= $input['grant_id'];
-			$data['grant_name']					= $input['grant_name'];
-			$data['client_id']					= $input['client_id'];
-			$data['user_id']					= $input['user_id'];
-			$data['scopes'][0]					= 'employee';
+			$data['id']							= $input['grant_id'];
+			$data['name']						= $input['grant_name'];
+			$data['client']['id']				= $input['client_id'];
+			$data['user']['id']					= $input['user_id'];
+			$data['scopes']						= explode(',', $input['scopes']);
 		}
 
 		//3. post to API
@@ -457,7 +456,7 @@ class AclController extends BaseController
 		foreach ($chart['data']['data'] as $key => $dt) 
 		{
 			$datas[$key]['id']                      = $dt['id'];
-			$datas[$key]['name']                    = ucwords($dt['name']);
+			$datas[$key]['text']                    = ucwords($dt['name']);
 		}                                       
 
 		return $datas;

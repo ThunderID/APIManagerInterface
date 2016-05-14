@@ -52,38 +52,39 @@ c(a.element).is("option")?(a.element.selected=!1,void this.$element.trigger("cha
 }
 ; var apimanager_ajax = { 
 
-	init: function(){
-		var ajax = function(url, callback) {
-			$.ajax({url: url, success: function(result){
-				callback(result);
-		    }});
-		}
+	ajax: function(url, callback) {
+		$.ajax({url: url, success: function(result){
+			if(callback) callback(result);
+	    }});
+	},
 
+	init_generateKey: function(url){
 		$( "#generateKey" ).click(function() {
 			//loading state
 			$("#inputKey").val('Generating');
 
 			//processing
-			ajax("{!! route('generate.key') !!}", function(data) { 
+			apimanager_ajax.ajax(url, function(data) { 
 				$("#inputKey").val(data.data);
 		    });
 		});
+	},
 
+	init_generateSecret: function(url){
 		$( "#generateSecret" ).click(function() {
 			//loading state
 			$("#inputSecret").val('Generating');
 			
 			//processing
-			ajax("{!! route('generate.secret') !!}", function(data) { 
+			apimanager_ajax.ajax(url, function(data) { 
 				$("#inputSecret").val(data.data);
 		    });
 		});	
-	},
+	}	
 }
 ; var apimanager = {
 	init	: function(){
 		apimanager_ui.init();
-		apimanager_ajax.init();
 	}
 };
 //# sourceMappingURL=app.js.map

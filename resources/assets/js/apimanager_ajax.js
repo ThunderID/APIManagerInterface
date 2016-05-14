@@ -1,11 +1,9 @@
 ; var apimanager_ajax = { 
 
-	init: function(){
-		var ajax = function(url, callback) {
-			$.ajax({url: url, success: function(result){
-				callback(result);
-		    }});
-		}
+	ajax: function(url, callback) {
+		$.ajax({url: url, success: function(result){
+			if(callback) callback(result);
+	    }});
 	},
 
 	init_generateKey: function(url){
@@ -14,11 +12,11 @@
 			$("#inputKey").val('Generating');
 
 			//processing
-			ajax(url, function(data) { 
+			apimanager_ajax.ajax(url, function(data) { 
 				$("#inputKey").val(data.data);
 		    });
 		});
-	}
+	},
 
 	init_generateSecret: function(url){
 		$( "#generateSecret" ).click(function() {
@@ -26,10 +24,9 @@
 			$("#inputSecret").val('Generating');
 			
 			//processing
-			ajax("{!! route('generate.secret') !!}", function(data) { 
+			apimanager_ajax.ajax(url, function(data) { 
 				$("#inputSecret").val(data.data);
 		    });
 		});	
-	}
-
+	}	
 }

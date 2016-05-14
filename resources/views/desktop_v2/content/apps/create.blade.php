@@ -63,7 +63,7 @@
 
 @section('js')
 	<script>
-	apimanager_ajax.init_generateKey("{!! route('generate.key') !!}")
-	apimanager_ajax.init_generateSecret("{!! route('generate.secret') !!}")
+	apimanager_ajax.init_generateKey("{!! route('generate.key') !!}");
+	apimanager_ajax.init_generateSecret("{!! route('generate.secret') !!}");
 	</script>
 @stop
